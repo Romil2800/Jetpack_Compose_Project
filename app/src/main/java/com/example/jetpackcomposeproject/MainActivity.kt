@@ -57,6 +57,7 @@ fun DefaultPreview() {
         Row(
             modifier = Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             CustomItem(weight = 3f, color = MaterialTheme.colors.secondary)
             CustomItem(weight = 1f)
