@@ -11,9 +11,16 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.BaselineShift
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import com.example.jetpackcomposeproject.ui.theme.JetpackComposeProjectTheme
 import org.w3c.dom.Text
+import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +53,11 @@ class MainActivity : ComponentActivity() {
 //                        )
 //                    }
 
-                    CustomText()
+
+//                    Text Selection
+//                    CustomText()
+
+
                 }
             }
         }
@@ -95,6 +106,9 @@ fun DefaultPreview() {
 
 //            Text Customization
 //            CustomText3()
+
+
+            SuperScriptText(normalText = "Hello", superText = "World!")
         }
     }
 }
@@ -162,15 +176,46 @@ fun DefaultPreview() {
 //}
 
 
+// Text Selection
+//@Composable
+//fun CustomText() {
+//    SelectionContainer {
+//        Column {
+//            Text(text = "Hello World")
+//            DisableSelection {
+//                Text(text = "Hello World")
+//            }
+//            Text(text = "Hello World")
+//        }
+//    }
+//}
+
+
 @Composable
-fun CustomText() {
-    SelectionContainer {
-        Column {
-            Text(text = "Hello World")
-            DisableSelection {
-                Text(text = "Hello World")
-            }
-            Text(text = "Hello World")
+fun SuperScriptText(
+    normalText: String,
+    normalFontSize: TextUnit = MaterialTheme.typography.subtitle1.fontSize,
+    superText: String,
+    normalTextFontSize: TextUnit = MaterialTheme.typography.overline.fontSize,
+) {
+    Text(buildAnnotatedString {
+        withStyle(
+            style = SpanStyle(
+                fontSize = normalFontSize
+            )
+        ) {
+            append(normalText)
         }
-    }
+        withStyle(
+            style = SpanStyle(
+                fontSize = normalTextFontSize,
+                fontWeight = FontWeight.Normal,
+
+//                baselineShift = BaselineShift.Subscript
+                baselineShift = BaselineShift.Superscript
+            )
+        ) {
+            append(superText)
+        }
+    })
 }
