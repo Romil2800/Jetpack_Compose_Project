@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -23,6 +24,7 @@ import org.w3c.dom.Text
 import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -58,6 +60,10 @@ class MainActivity : ComponentActivity() {
 //                    CustomText()
 
 
+                    ExpandableCard(
+                        title = "My title",
+                        description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    )
                 }
             }
         }
@@ -74,6 +80,7 @@ class MainActivity : ComponentActivity() {
 //    ) { }
 //}
 
+@ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -107,8 +114,13 @@ fun DefaultPreview() {
 //            Text Customization
 //            CustomText3()
 
+//            SuperScript/SubScript
+//            SuperScriptText(normalText = "Hello", superText = "World!")
 
-            SuperScriptText(normalText = "Hello", superText = "World!")
+            ExpandableCard(
+                title = "My title",
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
         }
     }
 }
@@ -190,32 +202,32 @@ fun DefaultPreview() {
 //    }
 //}
 
-
-@Composable
-fun SuperScriptText(
-    normalText: String,
-    normalFontSize: TextUnit = MaterialTheme.typography.subtitle1.fontSize,
-    superText: String,
-    normalTextFontSize: TextUnit = MaterialTheme.typography.overline.fontSize,
-) {
-    Text(buildAnnotatedString {
-        withStyle(
-            style = SpanStyle(
-                fontSize = normalFontSize
-            )
-        ) {
-            append(normalText)
-        }
-        withStyle(
-            style = SpanStyle(
-                fontSize = normalTextFontSize,
-                fontWeight = FontWeight.Normal,
-
-//                baselineShift = BaselineShift.Subscript
-                baselineShift = BaselineShift.Superscript
-            )
-        ) {
-            append(superText)
-        }
-    })
-}
+//SuperScript/SubScript
+//@Composable
+//fun SuperScriptText(
+//    normalText: String,
+//    normalFontSize: TextUnit = MaterialTheme.typography.subtitle1.fontSize,
+//    superText: String,
+//    normalTextFontSize: TextUnit = MaterialTheme.typography.overline.fontSize,
+//) {
+//    Text(buildAnnotatedString {
+//        withStyle(
+//            style = SpanStyle(
+//                fontSize = normalFontSize
+//            )
+//        ) {
+//            append(normalText)
+//        }
+//        withStyle(
+//            style = SpanStyle(
+//                fontSize = normalTextFontSize,
+//                fontWeight = FontWeight.Normal,
+//
+////                baselineShift = BaselineShift.Subscript
+//                baselineShift = BaselineShift.Superscript
+//            )
+//        ) {
+//            append(superText)
+//        }
+//    })
+//}
